@@ -22,8 +22,5 @@ server.get("/Delete/:id",(habits.Delete))
 server.post("/Update",(habits.Update))
 server.listen(3000,()=>{
     
-    console.log("I am Iron-Man")
+    console.log("Server is running ")
     connecttomondodb();})
-
-
-

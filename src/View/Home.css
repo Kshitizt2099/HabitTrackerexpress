@@ -1,0 +1,81 @@
+
+.HabitContainer{
+    background:url("https://startinfinity.s3.us-east-2.amazonaws.com/production/blog/post/5/main/1SvzKctRCi8bwB0QPdOZkBP0pRhsOqZpl0wjs6y0.png");
+    height: 100vh;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.Navbar{
+    height:70px;
+    width: 100vw;
+
+    background-color:black;
+    color: white;
+    
+}
+.nav{
+    border-radius: 10px;
+  }
+.nav:hover{
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) ;
+}
+.card{
+  text-align: center;
+  background-color:white;
+  width: 300px;
+  height: 200px;
+  margin: 20px;
+  font-size: medium;
+  color:black;
+  border: 5px black solid;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  font-size: medium;
+}
+.right{
+position: absolute;
+right: 40px;
+border-radius: 50%;
+margin:40px;
+
+}
+.right:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+transform: scale(1.5);
+
+  
+  }
+  .left{
+      position: absolute;
+  left: 50px;
+      border-radius: 50%;
+      margin: 40px;
+      
+      }
+      .left:hover{
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      transform: scale(1.5);
+      
+           }
+
+           button {
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin:40px;
+            margin-top: 12px;
+            cursor: pointer;
+          }
+
+    body{
+      margin: 0px;
+    }

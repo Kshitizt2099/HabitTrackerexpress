@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+  .header{
+    position: relative;
+    margin: 0%;
+    background-color:rgb(111, 107, 107);
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-family: Verdana, sans-serif;
+    border: gray 10px solid;
+    
+
+}
+
+.rightcard{
+    display: flex;
+    position: absolute;
+    color: black;
+    right: 100px;
+  
+ 
+}
+
+.rightcard h4{
+    margin: 20px;
+    
+}
+.View{
+    height: 100vh;
+    background-color:rgb(247, 206, 129);
+    
+}
+
+.habitsView{
+position: absolute;
+top: 150px;
+background-color: white;
+display: flex;
+flex-wrap: wrap;
+margin:0px;
+border: 5px solid black;
+border-radius: 30px;
+
+
+}
+.week{
+
+background-color:white;
+width: 200px;
+height: 200px;
+padding: 10px;
+font-size: medium;
+margin:10px;
+border: 15px solid red;
+border-radius: 10%;
+text-align: center;
+
+}
+
+.circle{
+text-align: center;
+width: 230px;
+height: 230px;
+font-size: medium;
+background-color: white;
+padding: 10px;
+margin:10px;
+border:15px solid greenyellow;
+border-radius: 50%;
+
+}
+.correct{
+margin: 10px;
+border-radius: 20px;
+}
+.correct:hover{
+
+   
+transform: scale(1.5);
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.incorrect{
+margin: 10px;
+border-radius: 20px;
+}
+.incorrect:hover{
+
+transform: scale(1.5);
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+body{
+  margin:0px;
+}
+.ImageForm{
+  display: flex;
+  flex-direction: row;
+  margin-left: 50px;
+}
+</style>
+    <title>Details</title>
+</head>
+<body>
+  <div class='header'>
+    <a href="/"><img  height=30 width=30 src="https://cdn-icons-png.flaticon.com/512/467/467274.png"/></a>
+     
+      <div class='rightcard'>
+      
+      <h4><%=tar.name%></h4>
+      <% var comp = Math.floor(tar.status*100/7) %>
+      <h4>% Completion <%=comp%></h4>
+    
+      </div>
+      
+    </div>
+
+<div class='View'>
+     
+       
+       <div class='habitsView'>
+        <% for(let i=0;i<tar.weeks.length;i++){%>
+          <div class="<%=tar.weeks[i].status  === 'Notdone' ? 'week' : 'circle' %>">
+            <div>
+              <p><%=tar.weeks[i].day%></p>
+              <p><%=tar.weeks[i].date%></p>
+           
+              <% if(tar.weeks[i].status === "Notdone"){ %>
+                <img  height=30 width=30 src="https://img.freepik.com/premium-vector/crying-emoji-sad-round-yellow-face-with-tear-dropping-isolated-white-background_53562-14280.jpg?size=626&ext=jpg"/>
+              <% } else{ %>  
+                <img  height=40 width=60 src="https://img.freepik.com/premium-vector/thumbs-up-hand_1056-764.jpg?w=740"/>
+             <% } %>
+
+             
+            </div>
+            <div class="ImageForm">
+              <div>
+                <form method="post" action="/Update">
+                  <input type="hidden" name="did" id="did" value="<%=tar.weeks[i].did%>">
+                  <input type="hidden" name="id" id="id" value="<%=tar._id%>">
+                  <input type="hidden" name="command" id="command" value="Done">
+                  <input type="image" class="correct" name="submit" src="https://img.freepik.com/free-vector/green-double-circle-check-mark_78370-1749.jpg?w=740&t=st=1692893249~exp=1692893849~hmac=02dfae727c2dd5e5c998d17e56e8cc3c969ad17a4902611e526469da08057332"  alt="Submit" width="30" height="30"/>
+                </form>
+              </div>
+              <div>
+                      
+               <form method="post" action="/Update">
+                <input type="hidden" name="did" id="did" value="<%=tar.weeks[i].did%>">
+                <input type="hidden" name="id" id="id" value="<%=tar._id%>">
+                <input type="hidden" name="command" id="command" value="Notdone">
+                <input type="image" class="incorrect" name="submit" src="https://img.freepik.com/free-psd/x-symbol-isolated_23-2150500369.jpg?w=740&t=st=1692895500~exp=1692896100~hmac=87ad792f1f8ea150502226c5e687cfdadbfa60fc900893a1c4723da4de83df92"  alt="Submit" width="30" height="30"/>
+              </form>
+              </div>
+
+            </div>
+            
+        
+              
+            
+              
+              
+          </div>
+    
+       <%}%>
+       </div>
+       
+    </div>
+  
+  
+</body>
+</html>

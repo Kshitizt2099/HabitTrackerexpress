@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="Home.css" type="text/css">
+</head>
+<body>
+    <div class="Navbar">
+        <a href="/Add"><button>AddHabits</button></a>
+      </div>
+  
+    <div class="HabitContainer">
+       
+        <% for(let i=0;i<habits.length;i++){%>
+            <div class="card">
+                <h2><%=habits[i].name%></h2>
+                <h2><%=habits[i].status%>/7</h2>
+                <a href="/Details/<%=habits[i]._id%>"><img class="left" width=40 height=40 src="https://img.freepik.com/free-vector/illustration-touch-screen-hand-gesture_53876-5608.jpg?w=740&t=st=1692952182~exp=1692952782~hmac=c6e20b8041586674e821aa7c3b00d952b2a1019cdbc78df1def6044a55bc320c"></a>
+                <a href="/Delete/<%=habits[i]._id%>"> <img  class="right " width=40 height=35 src="https://img.freepik.com/free-vector/illustration-trash-bin-icon_53876-5598.jpg?w=740&t=st=1692952025~exp=1692952625~hmac=6b693bb0651f67f3dadbf4f4a5f7f6bdcaa71427223ae3d0da6d86d1b14b61ff"></a>
+            </div>
+            
+    
+        <%}%>
+    </div>
+   
+</body>
+</html>

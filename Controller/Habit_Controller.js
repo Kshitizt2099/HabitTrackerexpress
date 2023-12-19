@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 //create a class for controller
 export default class HabitController
 {
-    
+    // For handling the homepage operations
     async home(req,res)
     {
         
@@ -20,14 +20,16 @@ export default class HabitController
         }
         catch(err)
         {
-            return res.status(401).send("No elements to show", err)
+            return res.status(401).send("Dtabase connectivity issue")
         }
         
     }
+    //For rending the Add Habit page
     addHabits(req,res)
     {
         res.render("Add")
     }
+    //For putting the new habit in DB
     updateHabits(req,res)
     {
         const {name}=req.body;
@@ -37,6 +39,7 @@ export default class HabitController
         res.redirect("/")
 
     }
+    //For rendering the details view/weekview of the chosen habit
     async  Details(req,res)
     {
         const id=req.params.id;
@@ -58,6 +61,7 @@ export default class HabitController
         }
         
     }
+    //To Delete the habit
     async Delete(req,res)
     {
         const id=req.params.id;
@@ -80,6 +84,7 @@ export default class HabitController
         
 
     }
+    //To Change the status of the habit.
     async Update(req,res)
     {
         

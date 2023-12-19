@@ -20,7 +20,7 @@ export default class HabitController
         }
         catch(err)
         {
-            return res.status(401).send("No Element")
+            return res.status(401).send("No elements to show", err)
         }
         
     }

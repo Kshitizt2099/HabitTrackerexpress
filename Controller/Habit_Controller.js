@@ -1,7 +1,11 @@
+import mongoose from "mongoose";
 import HabitModels from "../Models/Habit_Model.js"
-import { getDB } from "../config/mongodb.js";
+
 import { ObjectId } from "mongodb";
+import { MainSchema } from "../Models/HabitSchema.js";
 //create a class for controller
+
+const HabitModel=mongoose.model('AllHabits',MainSchema);
 export default class HabitController
 {
     // For handling the homepage operations
@@ -10,12 +14,10 @@ export default class HabitController
         
        
         try{
-            const db=getDB();
-            const collection=db.collection("habits");
             
     
-            let habits= await collection.find({}).toArray();
-            
+            let habits= await HabitModel.find({});
+            console.log(habits)
             res.render("Home",{habits})
         }
         catch(err)
@@ -45,11 +47,10 @@ export default class HabitController
         const id=req.params.id;
          
         try{
-            const db=getDB();
-            const collection=db.collection("habits");
+           
            
 
-           let tar= await collection.findOne({_id: new ObjectId(id)});
+           let tar= await HabitModel.findOne({_id: new ObjectId(id)});
            
             res.render("Details",{tar})
             
@@ -67,11 +68,9 @@ export default class HabitController
         const id=req.params.id;
          
         try{
-            const db=getDB();
-            const collection=db.collection("habits");
            
 
-            await collection.deleteOne({_id: new ObjectId(id)});
+            await HabitModel.deleteOne({_id: new ObjectId(id)});
             
             res.redirect("/")
             
@@ -91,9 +90,8 @@ export default class HabitController
         const {did,id,command}=req.body;
         
         try{
-            const db=getDB();
-            const collection=db.collection("habits");
-            let tar= await collection.findOne({_id: new ObjectId(id)});
+            
+            let tar= await HabitModel.findOne({_id: new ObjectId(id)});
             const objIndex = tar.weeks.findIndex((obj => obj.did == did));
             let curr_status=tar.status;
 
@@ -116,7 +114,7 @@ export default class HabitController
                 }
             }
             
-            await collection.updateOne({_id: new ObjectId(id)},{$set:{weeks:tar.weeks,status:curr_status}})
+            await HabitModel.updateOne({_id: new ObjectId(id)},{$set:{weeks:tar.weeks,status:curr_status}})
             res.redirect("/Details/"+id)
         
 

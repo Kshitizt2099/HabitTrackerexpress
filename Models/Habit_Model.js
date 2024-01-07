@@ -1,7 +1,9 @@
-import { getDB } from "../config/mongodb.js";
+
+import mongoose from "mongoose";
 import { weekdetailcreator } from "./weekmanagement.js";
+import { MainSchema } from "./HabitSchema.js";
 
-
+const HabitModel=mongoose.model('AllHabits',MainSchema);
 let habits;
 export default class HabitModels{
   
@@ -10,16 +12,21 @@ export default class HabitModels{
     
     static async add(name)
     {
-        const db=getDB();
-        const collection=db.collection("habits");
+       
+        
         const weeks=weekdetailcreator(Math.random()*10);
+    
         try{
-            await collection.insertOne({name,weeks,status:0});
-           console.log("added")
+            // create instance of model.
+          
+            const newHabit = new HabitModel({name,weeks,status:0});
+            await newHabit.save();
+            console.log("added");
+           
         }
-        catch(err)
-        {
-          console.log(err);
+        catch(err){
+            console.log(err);
+            throw new ApplicationError("Something went wrong with database", 500);
         }
 
         

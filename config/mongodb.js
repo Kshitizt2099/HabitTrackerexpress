@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 //in url replace localhost by 0.0.0.0
-const url="mongodb://127.0.0.1:27017/habits";
+const url='mongodb+srv://kshitijtawra2099:AlanWake2023@cluster0.djh4imd.mongodb.net/?retryWrites=true&w=majority';
 let client;
 export const connecttomondodb=()=>{
     //it returns promise so we can use then cathch

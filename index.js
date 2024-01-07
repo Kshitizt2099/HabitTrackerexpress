@@ -20,7 +20,7 @@ server.post("/",(habits.updateHabits))
 server.get("/Details/:id",(habits.Details))
 server.get("/Delete/:id",(habits.Delete))
 server.post("/Update",(habits.Update))
-server.listen(3000,()=>{
+server.listen(8800,()=>{
     
     console.log("Server is running ")
     connecttomondodb();})

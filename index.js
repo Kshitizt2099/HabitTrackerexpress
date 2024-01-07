@@ -1,7 +1,8 @@
 import express from "express"
 import path from "path";
 import HabitController from "./Controller/Habit_Controller.js";
-import {connecttomondodb} from "./config/mongodb.js";
+import { connecttodb } from "./config/mongodb.js";
+
 
 const server=express();
 //to getting the form data
@@ -20,7 +21,10 @@ server.post("/",(habits.updateHabits))
 server.get("/Details/:id",(habits.Details))
 server.get("/Delete/:id",(habits.Delete))
 server.post("/Update",(habits.Update))
-server.listen(3900,()=>{
+server.listen(3000,()=>{
     
     console.log("Server is running ")
-    connecttomondodb();})
+    connecttodb();})
+
+
+
